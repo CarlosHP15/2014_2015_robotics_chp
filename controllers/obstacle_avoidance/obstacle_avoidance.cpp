@@ -1,9 +1,9 @@
 /**
- * @file    main_template.cpp
- * @brief   A template for webots projects.
+ * @file    obstacle_avoidance.cpp
+ * @brief   Obstacle_avoidance.
  *
  * @author  Carlos Hernandez Paz <100292793@alumnos.uc3m.es>
- * @date    2014-11-04
+ * @date    2014-11-11
  */
 
 #include "MyRobot.h"
@@ -11,11 +11,6 @@
 // This is the main program of the controller.
 // It creates an instance of your Robot subclass, launches its
 // function(s) and destroys it at the end of the execution.
-// Note that only one instance of Robot should be created in
-// a controller program.
-// The arguments of the main function can be specified by the
-// "controllerArgs" field of the Robot node
-
 /**
  * @brief Main program.
  */

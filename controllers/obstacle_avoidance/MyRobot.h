@@ -1,15 +1,16 @@
 /**
- * @file    main_template.cpp
- * @brief   A template for webots projects.
+ * @file    MyRobot.h
+ * @brief   Obstacle_avoidance.
  *
  * @author  Carlos Hernandez Paz <100292793@alumnos.uc3m.es>
- * @date    2014-11-04
+ * @date    2014-11-11
  */
 
 #include <iostream>
 #include <cmath>
-
 #include <webots/DifferentialWheels.hpp>
+#include<string>
+#include<sstream>
 
 using namespace std;
 using namespace webots;
@@ -25,54 +26,59 @@ using namespace webots;
 
 class MyRobot : public DifferentialWheels {
 
-    private:
-        int _time_step;
+    //declaration of the privates variables
+private:
 
-        Compass * _my_compass;
-        DistanceSensor * _distance_sensor[NUM_DISTANCE_SENSOR];
-        double _left_speed, _right_speed;
+    int _time_step;
+    Compass * _my_compass;
+    DistanceSensor * _distance_sensor[NUM_DISTANCE_SENSOR];
+    double _left_speed, _right_speed;
 
-//struct of type enum which takes all modes
+    //struct of type enum which takes all modes
+    enum Mode {
+        STOP,
+        FORWARD,
+        TURN_LEFT,
+        TURN_RIGHT,
+        FOLLOWER_MAX,
+        CORNER_RIGHT,
+        COMPASS,
+        LESS_LEFT,
+        LESS_RIGHT,
+        TURN
 
-        enum Mode {
-            STOP,
-            FORWARD,
-            TURN_LEFT,
-            TURN_RIGHT,
-            FOLLOWER_MAX,
-            CORNER_RIGHT,
-            COMPASS,
-            LESS_LEFT,
-            LESS_RIGHT,
-            TURN
+    };
+    //select the operating mode
+    Mode _mode;
 
-        };
+public:
 
-        Mode _mode;
 
-    public:
-        // You may need to define your private methods or variables, like
-        //  Constructors, helper functions, etc.
+    /**
+     * @brief Empty constructor of the class.
+     * @param
+     * @return
+     */
+    MyRobot();
 
-        /**
-         * @brief Empty constructor of the class.
-         */
-        MyRobot();
-        
-        /**
-         * @brief Destructor of the class.
-         */
-        ~MyRobot();
+    /**
+     * @brief Destructor of the class.
+     * @param
+     * @return
+     */
+    ~MyRobot();
 
-        /**
-         * @brief User defined function for initializing and running the template class.
-         */
-        void run();
+    /**
+     * @brief User defined function for initializing and running the template class.
+     * @param
+     * @return
+     */
+    void run();
 
-        /**
-          * @brief An example for converting bearing vector from compass to angle (in degrees).
-          * @param double in_vector
-          * @return value of variable convert bearing to degrees
-          */
- double convert_bearing_to_degrees(const double* in_vector);
+    /**
+     * @brief An example for converting bearing vector from compass to angle (in degrees).
+     * @param double in_vector
+     * @return value of variable convert bearing to degrees
+     */
+    double convert_bearing_to_degrees(const double* in_vector);
 };
